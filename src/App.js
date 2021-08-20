@@ -17,7 +17,7 @@ function App() {
   const [taskOwner, setTaskOwner] = useState();
   const [taskCode, setTaskCode] = useState("CVOR-");
   const [namespace, setNamespace] = useState("");
-  const { handleAddMessage, messages } = useMessageContext();
+  const { handleAddMessage, messages, messageToEdit } = useMessageContext();
 
   return (
     <>
@@ -49,6 +49,7 @@ function App() {
           <Container>
             <MessageContentItem
               onConfirm={handleAddMessage}
+              messageToEdit={messageToEdit}
             />
           </Container>
           <Container>
