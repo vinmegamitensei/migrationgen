@@ -8,6 +8,7 @@ export const RadioGroup = ({ data, belongsTo, setNamespace }) => {
         <InputWrapper
           relatesTo={item}
           value={item}
+          key={item}
           type="radio"
           onChange={() => setNamespace(item)}
           labelContent={item.toUpperCase()}

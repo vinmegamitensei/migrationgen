@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "./Container";
 import { InputWrapper } from "./InputWrapper";
 
-export const MessageContentItem = ({ onConfirm }) => {
+export const MessageContentItem = ({ onConfirm, messageToEdit }) => {
   const [messageContent, setMessageContent] = useState({
     code: "",
     pt: "",
@@ -29,6 +29,12 @@ export const MessageContentItem = ({ onConfirm }) => {
       en: "",
     });
   }
+
+  useEffect(() => {
+    if(messageToEdit) {
+      setMessageContent(messageToEdit)
+    }
+  }, [messageToEdit])
 
   return (
     <Container>
