@@ -10,6 +10,7 @@ export const InputWrapper = ({
   labelContent,
   labelFirst = true,
   longerInput = false,
+  disabled,
   belongsTo,
 }) => {
   return (
@@ -21,6 +22,7 @@ export const InputWrapper = ({
       <Label relatesTo={relatesTo}>{labelContent}</Label>
       <Input
         relatesTo={relatesTo}
+        disabled={disabled}
         type={type}
         value={value}
         onChange={onChange}

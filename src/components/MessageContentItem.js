@@ -41,6 +41,7 @@ export const MessageContentItem = ({ onConfirm, messageToEdit }) => {
       <InputWrapper
         relatesTo="code"
         labelContent="Message Code"
+        disabled={messageToEdit}
         onChange={(e) =>
           setMessageContent({ ...messageContent, code: e.currentTarget.value })
         }
