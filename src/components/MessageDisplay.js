@@ -3,7 +3,7 @@ import { Message } from "./Message";
 
 export const MessageDisplay = ({ messages }) => {
   return (
-    <div>
+    <div style={{paddingBottom: "50px"}}>
       {messages.map((item) => (
         <Message
           code={item.code}

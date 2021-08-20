@@ -12,7 +12,7 @@ function defineMessageMethod(namespace) {
   return namespace.toUpperCase();
 }
 
-function formatDataToJava(owner, taskCode, namespace) {
+export function formatDataToJava(owner, taskCode, namespace) {
   return `package com.cvortex.message.migration.changesets.${namespace};
 
 import com.cvortex.message.migration.changesets.BaseChangeLog;
