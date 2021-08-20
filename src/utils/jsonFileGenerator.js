@@ -1,7 +1,7 @@
 import { saveAs } from "file-saver";
 import { formatFileName } from "./shared";
 
-function formatDataToJSON(messages, namespace) {
+export function formatDataToJSON(messages, namespace) {
   const formattedMessages = messages.map((item) => ({
     namespace: namespace,
     ...item,
