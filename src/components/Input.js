@@ -7,6 +7,7 @@ export const Input = ({
   onChange,
   belongsTo,
   longerInput,
+  disabled
 }) => (
   <input
     className={longerInput ? "inputStyleLong" : "inputStyle"}
@@ -15,5 +16,6 @@ export const Input = ({
     value={value}
     onChange={onChange}
     name={belongsTo}
+    disabled={disabled}
   />
 );
