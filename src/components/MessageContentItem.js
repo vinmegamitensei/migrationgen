@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { Container } from "./Container";
 import { InputWrapper } from "./InputWrapper";
 
@@ -30,11 +30,16 @@ export const MessageContentItem = ({ onConfirm, messageToEdit }) => {
     });
   }
 
+  const disabledConfirmButton = useMemo(() => 
+    !Object.keys(messageContent).every(key => messageContent[key]), 
+  [messageContent])
+
   useEffect(() => {
     if(messageToEdit) {
       setMessageContent(messageToEdit)
     }
   }, [messageToEdit])
+
 
   return (
     <Container>
@@ -66,7 +71,7 @@ export const MessageContentItem = ({ onConfirm, messageToEdit }) => {
         value={messageContent.en}
         longerInput
       />
-      <button onClick={formatContentToPayload}>Confirm</button>
+      <button onClick={formatContentToPayload} disabled={disabledConfirmButton}>Confirm</button>
     </Container>
   );
 };

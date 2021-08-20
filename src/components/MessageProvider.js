@@ -16,15 +16,17 @@ function MessageProvider({children}) {
 
   const handleAddMessage = (msg) => {
     const indexToEdit = messages.findIndex((m) => m.code === msg.code)
+    setMessageToEdit(null)
     if(indexToEdit !== -1) {
-      setMessages(prevMessages => [
+      return setMessages(prevMessages => [
         ...prevMessages.slice(0, indexToEdit), 
         msg, 
         ...prevMessages.slice(indexToEdit+1)
       ])
-      return setMessageToEdit(null)
+      
     } 
     setMessages(m => m.concat(msg));
+    
   }
 
   const handleRemoveMessage = (codeInput) => {
