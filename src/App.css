@@ -57,11 +57,23 @@
   position: fixed;
   width: 100%;
   bottom: 0;
-  background-color: white; 
-  box-shadow: -1px 2px 19px 0px rgba(0,0,0,0.10);
+  background-color: white;
+  box-shadow: -1px 2px 19px 0px rgba(0, 0, 0, 0.1);
   padding-left: 42px;
 }
 
 .buttonContainer {
   margin-right: 12px;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.twoBytwoGrid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-row: auto auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
 }
