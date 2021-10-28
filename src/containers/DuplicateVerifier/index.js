@@ -7,7 +7,7 @@ import { RadioGroup } from "../../components";
 function DuplicateVerifier() {
   const [shouldStatus, setShouldStatus] = useState("");
   const [messageToTest, setMessageToTest] = useState("");
-  const [duplicatedCodes, setDuplicatedCodes] = useState({});
+  const [duplicateCodes, setDuplicateCodes] = useState({});
   const [duplicatedMessages, setDuplicatedMessages] = useState({});
 
   const [systemFile, setSystemFile] = useState(null);
@@ -15,7 +15,7 @@ function DuplicateVerifier() {
   const shouldCreate = () => {
     if (!messageToTest) return;
     if (duplicatedMessages[messageToTest]) {
-      const codes = duplicatedCodes[messageToTest];
+      const codes = duplicateCodes[messageToTest];
       return setShouldStatus(
         `No, this message already exists, you can use with this codes: ${codes}`
       );
@@ -33,7 +33,7 @@ function DuplicateVerifier() {
     const selectedFile = files[value];
     if (!selectedFile) return;
     setSystemFile(value);
-    setDuplicatedCodes(findDuplicateMessageCodes(selectedFile, value));
+    setDuplicateCodes(findDuplicateMessageCodes(selectedFile, value));
     setDuplicatedMessages(findDuplicatedMessages(selectedFile));
   };
 
@@ -105,14 +105,14 @@ function DuplicateVerifier() {
           alignSelf: "center",
         }}
       >
-        <h2 style={{ marginTop: 0 }}>Duplicateds Messages And Codes</h2>
+        <h2 style={{ marginTop: 0 }}>Duplicate Messages And Codes</h2>
         <div>
-          {_map(duplicatedCodes, (duplicatedCodes, key) => {
+          {_map(duplicateCodes, (duplicateCodesInternal, key) => {
             return (
               <div key={key}>
                 <p className="labelStyle">{key}</p>
                 <div style={{ wordBreak: "break-word" }}>
-                  {_map(duplicatedCodes, (code, key) => {
+                  {_map(duplicateCodesInternal, (code, key) => {
                     return <span key={key}> {code}</span>;
                   })}
                 </div>
