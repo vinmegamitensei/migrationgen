@@ -2,19 +2,18 @@ import "../../App.css";
 import { useState } from "react";
 import _map from "lodash/map";
 import { csm, crm, dm, wos } from "./sourceObjects";
-import { findDuplicateMessageCodes, findDuplicatedMessages } from "./utils";
+import { checkForDuplicates } from "./utils";
 import { RadioGroup } from "../../components";
 function DuplicateVerifier() {
   const [shouldStatus, setShouldStatus] = useState("");
   const [messageToTest, setMessageToTest] = useState("");
   const [duplicateCodes, setDuplicateCodes] = useState({});
-  const [duplicatedMessages, setDuplicatedMessages] = useState({});
 
   const [systemFile, setSystemFile] = useState(null);
 
   const shouldCreate = () => {
     if (!messageToTest) return;
-    if (duplicatedMessages[messageToTest]) {
+    if (duplicateCodes[messageToTest]) {
       const codes = duplicateCodes[messageToTest];
       return setShouldStatus(
         `No, this message already exists, you can use with this codes: ${codes}`
@@ -32,9 +31,9 @@ function DuplicateVerifier() {
     };
     const selectedFile = files[value];
     if (!selectedFile) return;
+
     setSystemFile(value);
-    setDuplicateCodes(findDuplicateMessageCodes(selectedFile, value));
-    setDuplicatedMessages(findDuplicatedMessages(selectedFile));
+    setDuplicateCodes(checkForDuplicates(selectedFile, value));
   };
 
   return (
